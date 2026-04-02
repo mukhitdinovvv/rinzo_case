@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейс LevelUP School | Rinzo AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #FFFFFF;
+            --section-bg: #F8FAFC;
+            --primary: #00D1FF;
+            --secondary: #6366F1;
+            --text-main: #0F172A;
+            --text-dim: #64748B;
+            --accent-gradient: linear-gradient(135deg, #00D1FF 0%, #6366F1 100%);
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #F1F5F9;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* A4 Page Container */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 20px auto;
+            background: var(--bg);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media print {
+            body { background: none; padding: 0; }
+            .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; }
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #E2E8F0;
+            padding-bottom: 20px;
+        }
+
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 24px; color: var(--secondary); }
+        .logo span { color: var(--primary); }
+        .case-tag { background: #EEF2FF; color: var(--secondary); padding: 6px 16px; border-radius: 50px; font-weight: 700; font-size: 12px; text-transform: uppercase; }
+
+        /* Hero Section */
+        .hero {
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 38px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        h1 span {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-dim);
+            max-width: 90%;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: #F8FAFC;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #F1F5F9;
+        }
+
+        .stat-value {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label { font-size: 13px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; }
+
+        /* Sections */
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex-grow: 1;
+            height: 2px;
+            background: #F1F5F9;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .content-card {
+            padding: 25px;
+            border-radius: 20px;
+            background: #FFF;
+            border: 1px solid #F1F5F9;
+            box-shadow: var(--card-shadow);
+        }
+
+        .content-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card h3 i { color: var(--primary); }
+        .content-card p { font-size: 15px; color: var(--text-dim); }
+
+        /* Chart Section */
+        .chart-box {
+            background: #F8FAFC;
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 50px;
+        }
+
+        .bar-item { margin-bottom: 20px; }
+        .bar-info { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; font-size: 15px; }
+        .bar-track { height: 40px; background: #E2E8F0; border-radius: 10px; overflow: hidden; }
+        .bar-fill {
+            height: 100%;
+            background: var(--accent-gradient);
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+            color: white;
+            font-weight: 800;
+            font-size: 16px;
+        }
+
+        /* Comparison Table */
+        .comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+        }
+
+        .comparison th { text-align: left; padding: 15px; background: #F8FAFC; color: var(--text-dim); font-size: 13px; text-transform: uppercase; border-bottom: 2px solid #E2E8F0; }
+        .comparison td { padding: 18px 15px; border-bottom: 1px solid #F1F5F9; font-size: 15px; }
+        .comparison td:first-child { font-weight: 700; color: var(--secondary); }
+        .comparison tr:last-child td { border-bottom: none; }
+
+        /* Footer */
+        .contact-box {
+            background: var(--text-main);
+            color: white;
+            padding: 40px;
+            border-radius: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-text h2 { font-family: 'Montserrat', sans-serif; font-size: 24px; margin-bottom: 10px; }
+        .contact-text p { color: rgba(255,255,255,0.7); font-size: 14px; }
+        .btn {
+            background: var(--primary);
+            color: var(--text-main);
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        /* Accents */
+        .accent-circle {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            z-index: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="accent-circle"></div>
+    
+    <header>
+        <div class="logo">RINZO <span>AI</span></div>
+        <div class="case-tag">Результаты внедрения</div>
+    </header>
+
+    <main class="content">
+        <section class="hero">
+            <h1>LevelUP School:<br><span>Масштабирование Продаж X4.5</span></h1>
+            <p>Кейс автоматизации образовательного бизнеса в Казахстане: как внедрение AI-агентов позволило увеличить ежемесячную выручку с 200 000 ₸ до 910 000 ₸ за 60 дней.</p>
+        </section>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-value">4.5x</span>
+                <span class="stat-label">Рост выручки</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">5 сек</span>
+                <span class="stat-label">Отклик на лид</span>
+            </div>
+            <div class="stat-card" style="background: var(--accent-gradient);">
+                <span class="stat-value" style="color: white;">100%</span>
+                <span class="stat-label" style="color: rgba(255,255,255,0.8);">Охват заявок</span>
+            </div>
+        </section>
+
+        <h2 class="section-title">Ситуация "До" и Решение</h2>
+        <div class="grid-2">
+            <div class="content-card">
+                <h3><i class="fa-solid fa-circle-exclamation"></i> Проблема</h3>
+                <p>Медленные ответы менеджеров (30+ мин), потеря ночных заявок и низкая конверсия. Продажи замерли на отметке 200 000 ₸.</p>
+            </div>
+            <div class="content-card">
+                <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Решение</h3>
+                <p>AI-Агент Rinzo, работающий 24/7. Мгновенная квалификация, дожим в мессенджерах и интеграция с CRM-системой.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Динамика роста (₸)</h2>
+        <section class="chart-box">
+            <div class="bar-item">
+                <div class="bar-info"><span>До внедрения AI</span><span>200 000 ₸</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 22%; background: #94A3B8;">Начало</div></div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-info"><span>1-й месяц с AI</span><span>825 000 ₸</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 85%;">Рост +312%</div></div>
+            </div>
+            <div class="bar-item">
+                <div class="bar-info"><span>2-й месяц (Текущий)</span><span>910 000 ₸</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width: 100%;">Рост +355%</div></div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Эффективность системы</h2>
+        <table class="comparison">
+            <thead>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Обычный отдел</th>
+                    <th>Rinzo AI Система</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Скорость реакции</td>
+                    <td>В среднем 45 минут</td>
+                    <td>Менее 5 секунд</td>
+                </tr>
+                <tr>
+                    <td>Режим работы</td>
+                    <td>09:00 - 18:00 (5/2)</td>
+                    <td>24/7 (Без выходных)</td>
+                </tr>
+                <tr>
+                    <td>Упущенные лиды</td>
+                    <td>До 35% (человеческий фактор)</td>
+                    <td>0% (автоматическая обработка)</td>
+                </tr>
+                <tr>
+                    <td>Результат</td>
+                    <td>Стагнация дохода</td>
+                    <td>Кратный рост выручки</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="contact-box">
+            <div class="contact-text">
+                <h2>Готовы к росту?</h2>
+                <p>Внедрите AI-решения Rinzo и начните зарабатывать больше.</p>
+            </div>
+            <div style="text-align: right;">
+   
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html>
